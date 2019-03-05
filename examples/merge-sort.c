@@ -5,6 +5,11 @@
 
 static uint16_t values[256];
 
+/**
+ * list_merge() - Merge two sorted lists in non-decreasing order
+ * @left: pointer to the head of first list
+ * @right: pointer to the head of second list
+ */
 static void list_merge(struct list_head *left, struct list_head *right)
 {
     LIST_HEAD(tmp);
@@ -26,6 +31,12 @@ static void list_merge(struct list_head *left, struct list_head *right)
     list_cut_position(right, &tmp, tmp.prev);
 }
 
+/**
+ * list_middle() - Find middle point of the list
+ * @head: pointer to the head of the list
+ *
+ * Return: pointer to the middle point of the list
+ */
 static struct list_head *list_middle(struct list_head *head)
 {
     struct list_head *slow, *fast;
@@ -41,6 +52,10 @@ static struct list_head *list_middle(struct list_head *head)
     return slow;
 }
 
+/**
+ * list_mergesort() - Perform mergesort on the list
+ * @head: pointer to the head of the list
+ */
 static void list_mergesort(struct list_head *head)
 {
     if (list_empty(head) || list_is_singular(head))
